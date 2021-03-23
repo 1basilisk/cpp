@@ -1,0 +1,80 @@
+#include <iostream>
+#include <ctime>
+#include <iomanip>
+#include <cmath>
+#include <cstdlib>
+using namespace std;
+
+int game()
+{
+	int number;
+	int trial = 0;
+	int guess;
+	//string again;
+	string s("!!!GUESS THE NUMBER¡¡¡\n");
+	string w("!!BINGO!! YOUR GUESS WAS CORRECT¡¡");
+	string l("BETTER LUCK NEXT TIME");
+	cout << setw(70) << setfill('*') << right << s;
+	srand(time(0));
+	number = rand();
+	while (number > 15)
+	{
+		number = number % 15 + 1;
+	}
+	string g("I have two things in my mind a number between 1 and 15, and a prediction that you can not guess it!.\n Prove me wrong!\n");
+	cout << g;
+	//	cout << number;
+	while (trial < 3)
+	{
+		cout << "guess " << trial + 1 << endl;
+		cin >> guess;
+		if (guess > number)
+		{
+			cout << "It is less than " << guess				 << endl;
+			trial++;
+		}
+		if (guess < number)
+		{
+			cout << "Think big!l\n";
+			trial++;
+		}
+		if (guess == number)
+		{
+			cout << w << endl;
+			if(trial == 0){
+			cout << "Good job! you did it on just one try\n";
+				}
+				if(trial == 1){
+				cout <<"two tries are not bad!\n";	
+				}
+				if(trial == 2){
+				cout << "that was a close one!!\n";
+				}
+			cout << "answer is :" << number << endl;
+			break;
+		}
+		if (trial == 3)
+		{
+			cout << "answer is :" << number << endl;
+		}
+	}
+	cin.sync();
+	cin.clear();
+}
+int main()
+{
+	string again;
+	game();
+	cout << "Wanna Try again??. Type y/n\n";
+	cin >> again;
+	if (again == "y")
+	{
+		main();
+	}
+	if (again == "n")
+	{
+		cout << "Thanks for playing! Looser";
+		cin.clear();
+		return 0;
+	}
+}
