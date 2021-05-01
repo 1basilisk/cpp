@@ -25,7 +25,7 @@ void printap()							 //prints AP
 		y=++y;
 	} while (y<n);
 }
-void input()         					    // input
+void input()         					    // taking input
 {
 	cout << "Enter The First Term \t\t";
 	cin >> a;
