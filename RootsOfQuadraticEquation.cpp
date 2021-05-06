@@ -6,15 +6,15 @@ int main()
 {
     double a, b, c, D, r1, r2;
     cout << "enter cofficient of x²"
-         << "\t";//this will take coff. of x²
+         << "\t";
     cin >> a;
     cout << "\n"
          << "enter cofficient of x"
-         << "\t";//coff. of x
+         << "\t";
     cin >> b;
     cout << "\n"
          << "enter constant term"
-         << "\t";//constant term
+         << "\t";
     cin >> c;
     // Finding discriminant.
     D = b * b - 4 * a * c;
