@@ -1,4 +1,4 @@
-//to find roots of quadratic equation
+//to find roots of quadratic equations
 #include <iostream>
 #include <cmath>
 using namespace std;
@@ -23,11 +23,11 @@ int main()
     {
         cout << "No Real Root. Try Again"
              << "\n"
-                "\n";/*since D is negative roots are imaginary*/
+                "\n";   /*since D is negative roots are         					imaginary*/
 
         main();
     }
-    if (D == 0)// condition for equal root
+    if (D == 0)        // condition for equal root
     {
         r1 = -b / 2 / a;
         cout << "\t";
@@ -36,7 +36,7 @@ int main()
         cout << "\n";
         main();
     }
-    if (D > 0)/*condition for real and unequal roots*/
+    if (D > 0 )   /*condition for real and unequal                     		  roots*/
     {
         r1 = (-b + sqrt(D)) / 2 / a;
         r2 = (-b - sqrt(D)) / 2 / a;
