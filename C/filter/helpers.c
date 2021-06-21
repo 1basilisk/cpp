@@ -144,3 +144,111 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 	}
 	return;
 }
+
+//edge detection
+void edge(int height, int width, RGBTRIPLE image[height][width])
+{
+	//defining kernel;
+	int kernel[3][3];
+	kernel[0][0] = -1;
+	kernel[0][1] = 0;
+	kernel[0][2] = 1;
+	kernel[1][0] = -2;
+	kernel[1][1] = 0;
+	kernel[1][2] = 2;
+	kernel[2][0] = -1;
+	kernel[2][1] = 0;
+	kernel[2][2] = 1;
+	
+	//making a replica;
+	RGBTRIPLE copy[height][width];
+	RGBTRIPLE copy2[height][width];
+	for (int h = 0; h < height; h++)
+	{
+		for (int k = 0; k < width; k++)
+		{
+			copy[h][k] = image[h][k];
+			copy2[h][k] = image[h][k];
+		}
+	}
+	float n; //number of pixels in arrays;
+	float r, g, b;
+	//going thru all pixels;
+	for (int i = 0; i < height; i++)
+	{
+		for (int j = 0; j < width; j++)
+		{
+			n = 0;
+			r = 0;
+			g = 0;
+			b = 0;
+			//going thru arrays of 9s;
+			for (int ii = -1; ii <= 1; ii++)
+			{
+				for (int jj = -1; jj <= 1; jj++)
+				{
+					//checking for border cases
+					if (i + ii >= 0 && i + ii < height && j + jj >= 0 && j + jj < width)
+					{
+						n++;
+						r += (float)copy[i + ii][j + jj].rgbtRed * jj;
+						g += (float)copy[i + ii][j + jj].rgbtGreen * jj;
+						b += (float)copy[i + ii][j + jj].rgbtBlue * jj;
+					}
+				}
+			}
+			//printf("%f ", n);
+			//saving changes in original file;
+			copy[i][j].rgbtRed = (int)round(r / n);
+			copy[i][j].rgbtGreen = (int)round(g / n);
+			copy[i][j].rgbtBlue = (int)round(b / n);
+		}
+		//printf("\n\n\n\n");
+	}
+	//vertical detection;
+//	float n; //number of pixels in arrays;
+//	float r, g, b;
+	//going thru all pixels;
+	for (int i = 0; i < height; i++)
+	{
+		for (int j = 0; j < width; j++)
+		{
+			n = 0;
+			r = 0;
+			g = 0;
+			b = 0;
+			//going thru arrays of 9s;
+			for (int ii = -1; ii <= 1; ii++)
+			{
+				for (int jj = -1; jj <= 1; jj++)
+				{
+					//checking for border cases
+					if (i + ii >= 0 && i + ii < height && j + jj >= 0 && j + jj < width)
+					{
+						n++;
+						r += (float)copy[i + ii][j + jj].rgbtRed * ii;
+						g += (float)copy[i + ii][j + jj].rgbtGreen * ii;
+						b += (float)copy[i + ii][j + jj].rgbtBlue * ii;
+					}
+				}
+			}
+			//printf("%f ", n);
+			//saving changes in original file;
+			copy2[i][j].rgbtRed = (int)round(r / n);
+			copy2[i][j].rgbtGreen = (int)round(g / n);
+			copy2[i][j].rgbtBlue = (int)round(b / n);
+		}
+		//printf("\n\n\n\n");
+	}
+for (int i = 0; i < height; i++)
+{
+	for (int j = 0; j < width; j++)
+	{
+		image[i][j].rgbtRed = round(sqrt((copy2[i][j].rgbtRed * copy2[i][j].rgbtRed) + (copy2[i][j].rgbtRed * copy2[i][j].rgbtRed)));
+		image[i][j].rgbtGreen = image[i][j].rgbtRed;
+		image[i][j].rgbtBlue = image[i][j].rgbtBlue;
+	
+	return;
+}
+}
+}
