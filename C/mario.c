@@ -19,7 +19,7 @@ int main(void)
 		{
 			if (j < height - i)
 			{
-				printf("~", j);
+				printf("~");
 			}
 			else
 			{

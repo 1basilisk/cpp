@@ -1,3 +1,9 @@
+/*
+Author: Utkarsh Sharma
+Purpose: A guessing game
+Date: 2019 probably
+*/
+
 #include <iostream>
 #include <ctime>
 #include <iomanip>
@@ -63,7 +69,7 @@ void game() //main function
 		}
 		if (guess < number)
 		{
-			cout << "Think big!l\n";
+			cout << "Think big!!\n";
 			trial++;
 		}
 		if (guess == number)
@@ -171,3 +177,4 @@ int main()
 		}*/
 	}
 }
+

@@ -11,7 +11,7 @@ int main(void)
     int len = get_int("length: ");
     int in = get_int("key: ");
     printf("PlainText: ");
-   char *text = malloc(len); 
+   char *text = malloc(len);
    scanf("%s", text);
     int key = in % 26;
     //  int key = 2;
@@ -44,7 +44,7 @@ int main(void)
                 cip = cip - 26;
             }
             //printf("%i\n", cip);
-            text[i] = (char)cip;  
+            text[i] = (char)cip;
         }
         //skipping all others
         else
@@ -53,7 +53,7 @@ int main(void)
         }
     }
     printf("ciphertext: %s\n", text);
-    
+
     free(text);
 }
 
